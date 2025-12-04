@@ -31,8 +31,14 @@ public class squashSupiki : MonoBehaviour
         if (rootBone != null && headBone != null)
         {
             Vector3 diff = headBone.transform.position - rootBone.position;
-            _railDirection = diff.normalized; // 方向だけ（長さ1のベクトル）にする
+            _railDirection = diff.normalized; // 方向だけ
         }
+    }
+
+    public void ForceStartDrag()
+    {
+        _isDragging = true;
+        if (crySound1 != null) _audioSource.PlayOneShot(crySound1);
     }
 
     void Update()
@@ -63,7 +69,6 @@ public class squashSupiki : MonoBehaviour
         {
             
             Vector3 mousePos = GetWorldMousePos();
-            mousePos.z = 0; 
 
             Vector3 rootToMouse = mousePos - rootBone.position;         
             float distanceOnRail = Vector3.Dot(rootToMouse, _railDirection);
