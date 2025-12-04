@@ -20,7 +20,14 @@ public class idleSupiki : MonoBehaviour
     private bool _isShivering = false;
     private Vector3 _basePos;
 
-    
+    void Start(){
+         if (!_audioSource.isPlaying && voices != null)
+            {
+                _audioSource.PlayOneShot(voices[0]);
+            }
+    }
+
+
     void OnEnable()
     {
         
@@ -63,6 +70,8 @@ public class idleSupiki : MonoBehaviour
             
             StopAllCoroutines(); 
 
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+
             if (_audioSource.isPlaying) _audioSource.Stop();//ｼﾞｮﾜﾖｰ停止
 
             if (_renderer != null && shiverFace != null)
@@ -89,8 +98,16 @@ public class idleSupiki : MonoBehaviour
 
         while (true)
         {
-            
-            
+            if (RandomBool())
+            {
+                
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
 
             yield return StartCoroutine(PerformJump());//ジャンプ
 
@@ -105,10 +122,12 @@ public class idleSupiki : MonoBehaviour
                 _renderer.sprite = faceVariations[Random.Range(0, faceVariations.Length)];
             }// ^ワ^
 
-            yield return new WaitForSeconds(0.2f);
-            if (_renderer != null && defaultFace != null) _renderer.sprite = defaultFace;
+            //yield return new WaitForSeconds(0.2f);
+            //if (_renderer != null && defaultFace != null) _renderer.sprite = defaultFace;
 
-            float wait = Random.Range(0.2f, 1.2f);
+            float wait = Random.Range(0.0f, 0.5f);
+            if(wait < 0.2f) wait = 0.0f;
+
             yield return new WaitForSeconds(wait);
         }
     }
@@ -116,6 +135,12 @@ public class idleSupiki : MonoBehaviour
     IEnumerator PerformJump()
     {
         float elapsed = 0f;
+        //float iscontinue = 1.0f;
+
+       // {
+       // iscontinue = Random.Range(0.0f, 1.0f);
+
+      //  jumpHeight = Random.Range(0.1f,2.2f);
         
         while (elapsed < jumpDuration)
         {
@@ -129,9 +154,18 @@ public class idleSupiki : MonoBehaviour
             transform.position = _basePos + Vector3.up * yOffset;
 
             yield return null; // 1フレーム待つ
-        }
+        //}
 
+        //elapsed = 0f;
+
+       // }while(iscontinue > 3.0f);
         
         transform.position = _basePos;
+    }
+}
+
+public static bool RandomBool()
+    {
+        return Random.Range(0, 2) == 0;
     }
 }

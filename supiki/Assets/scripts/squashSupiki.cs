@@ -38,6 +38,12 @@ public class squashSupiki : MonoBehaviour
     public void ForceStartDrag()
     {
         _isDragging = true;
+        if (_audioSource == null)
+        {
+            _audioSource = GetComponent<AudioSource>();
+            if (_audioSource == null) _audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         if (crySound1 != null) _audioSource.PlayOneShot(crySound1);
     }
 
