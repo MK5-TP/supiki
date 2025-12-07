@@ -344,7 +344,7 @@ MonoBehaviour:
   idleObj: {fileID: 1277076973}
   idleScript: {fileID: 1277076974}
   squashScript: {fileID: 932156395}
-  idleThreshold: 6
+  idleThreshold: 4.5
 --- !u!4 &473426700
 Transform:
   m_ObjectHideFlags: 0
@@ -615,15 +615,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 98fdb4f060a7f3b459af735e24713ccf, type: 3}
   - {fileID: 8300000, guid: 625a9f4afc2b9d142bee1026c41a1da0, type: 3}
   - {fileID: 8300000, guid: 770a5fc03f05f4648afe2aeb5934daa8, type: 3}
+  - {fileID: 8300000, guid: f73ea1e5291cab442a2c0bd5f639a593, type: 3}
   faceVariations:
   - {fileID: 21300000, guid: 85d7e50e88b0bae4a9d08370f9050418, type: 3}
   - {fileID: 21300000, guid: 5465401680199c84cb9f942b52de50a7, type: 3}
   - {fileID: 21300000, guid: d32661f04b09d78478d1ff9afdb8461d, type: 3}
   - {fileID: 21300000, guid: 0ad03bd0d0ca00049a68fb4fe9397043, type: 3}
+  - {fileID: 21300000, guid: 2cd4f7fb39d4b8642a5f865238a8d5c7, type: 3}
+  - {fileID: 21300000, guid: 40b2e2a3b851ffb4eb240707ccb19495, type: 3}
   defaultFace: {fileID: 21300000, guid: 0ad03bd0d0ca00049a68fb4fe9397043, type: 3}
   shakeAmount: 0.05
   shiverFace: {fileID: 21300000, guid: 6c64f21aaaf4b8a4f957078e398d7d7f, type: 3}
-  shiverVoice: {fileID: 8300000, guid: 4b493dbb1b9f7a449be806f4ee19c67c, type: 3}
+  shiverVoices:
+  - {fileID: 8300000, guid: 4b493dbb1b9f7a449be806f4ee19c67c, type: 3}
+  - {fileID: 8300000, guid: 41461c1bfc8a29c4da9289c68756bc66, type: 3}
 --- !u!212 &1277076976
 SpriteRenderer:
   m_ObjectHideFlags: 0

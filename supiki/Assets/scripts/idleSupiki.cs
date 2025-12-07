@@ -13,7 +13,7 @@ public class idleSupiki : MonoBehaviour
     [Header("ｶﾞｸﾌﾞﾙ")]
     public float shakeAmount = 0.05f;    
     public Sprite shiverFace;         
-    public AudioClip shiverVoice;//ｽﾋﾟｷﾈﾙｼﾞﾊﾞｾﾞﾖ!!!
+    public AudioClip[] shiverVoices;//ｽﾋﾟｷﾈﾙｼﾞﾊﾞｾﾞﾖ!!!
 
     private SpriteRenderer _renderer;
     private AudioSource _audioSource;
@@ -78,11 +78,18 @@ public class idleSupiki : MonoBehaviour
             {
                 _renderer.sprite = shiverFace;
             }
-            if (shiverVoice != null)
-            {
-                _audioSource.PlayOneShot(shiverVoice);
+            if(Random.Range(0, 1.0f) < 0.1f){
+                if (shiverVoices[1] != null)
+                {
+                    _audioSource.PlayOneShot(shiverVoices[1]);
+                }
+            }else{
+                if (shiverVoices[0] != null)
+                {
+                    _audioSource.PlayOneShot(shiverVoices[0]);
+                }
+
             }
-            
             //if (_renderer != null && defaultFace != null) _renderer.sprite = defaultFace;
         }
         else
